@@ -1,0 +1,30 @@
+scalar DateTime
+
+enum Permission {
+  ADMIN
+  USER
+}
+
+type Query {
+  users: [User]!
+  hello(name: String!): String
+}
+type User {
+  id: ID!
+  name: String!
+  email: String # Nullable: Do not return if it is not current users email.
+  password: String # Nullable: Do not return password data.
+  permissions: [Permission]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Mutation {
+  createUser(data: CreateUserInput!): User!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}

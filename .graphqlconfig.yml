@@ -1,0 +1,11 @@
+projects:
+  prisma:
+    schemaPath: prisma/prisma.graphql
+    extensions:
+      endpoints:
+        default: ${env:PRISMA_ENDPOINT}
+      codegen:
+        - generator: prisma-binding
+          language: typescript
+          output:
+            binding: ./src/prisma/prisma.binding.ts

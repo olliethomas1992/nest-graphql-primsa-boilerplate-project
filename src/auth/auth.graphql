@@ -1,0 +1,28 @@
+type Query {
+  currentUser: User!
+}
+
+type Mutation {
+  login(data: AuthInput!): AuthPayload!
+  logout: Message
+}
+
+type Message {
+  message: String
+}
+
+type CurrentUser {
+  email: String!
+  id: String!
+  permissions: [Permission]
+}
+
+input AuthInput {
+  email: String!
+  password: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
